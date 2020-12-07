@@ -5,12 +5,12 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"rsc.io/quote"
 )
 
 func main() {
 	http.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(rw, quote.Go())
+		if _, err := fmt.Fprintln(rw, "Hello World"); err != nil {
+			log.Fatal(err)
 		d, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			log.Fatal(err)
